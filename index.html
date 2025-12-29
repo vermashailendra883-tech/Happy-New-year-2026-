@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy New Year 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
-<!-- स्क्रीनशॉट लेने के लिए -->
+<!-- स्क्रीनशॉट टूल -->
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <style>
@@ -20,13 +20,12 @@
         overflow-x: hidden;
     }
 
-    /* --- SHARE WRAPPER (इस हिस्से का फोटो बनेगा) --- */
+    /* --- CAPTURE AREA (फोटो बनने वाला हिस्सा) --- */
     .capture-area {
         position: relative;
         width: 100%;
         max-width: 420px;
-        padding: 10px;
-        background: transparent;
+        padding: 5px;
         display: flex; justify-content: center;
     }
 
@@ -38,6 +37,7 @@
         padding: 15px;
         text-align: center;
         box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+        position: relative;
     }
 
     .top-decor { font-size: 35px; color: var(--saffron); margin-top: -10px; }
@@ -57,15 +57,24 @@
         border: 4px double var(--gold);
         border-radius: 10px;
         margin: 10px 0;
-        overflow: hidden; position: relative;
-        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; display: flex; align-items: center; justify-content: center;
     }
     #userPhoto { width: 100%; height: 100%; object-fit: contain; }
 
-    /* --- CONTROLS (ये फोटो में नहीं आएंगे) --- */
+    /* --- SITE LINK INSIDE PHOTO (VISUAL) --- */
+    .site-watermark {
+        background: #000; color: #fff;
+        font-size: 12px; padding: 5px;
+        border-radius: 20px; margin-top: 10px;
+        display: inline-block; width: 90%;
+        font-family: Arial, sans-serif;
+    }
+
+    /* --- CONTROLS --- */
     .controls-area {
         width: 90%; max-width: 400px;
-        margin-top: 10px; text-align: center; z-index: 20;
+        margin-top: 15px; text-align: center; z-index: 20;
+        padding-bottom: 20px;
     }
 
     .file-btn {
@@ -74,18 +83,23 @@
         display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
-    /* जादुई शेयर बटन */
+    /* SHARE BUTTON */
     .share-magic-btn {
         background: linear-gradient(45deg, #25D366, #128C7E);
         color: white; border: none; width: 100%; padding: 15px;
         font-size: 18px; font-weight: bold; border-radius: 8px;
         cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-top: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin-top: 15px;
         animation: pulse 2s infinite;
     }
 
-    /* लोडिंग स्क्रीन */
-    #loading { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; color:white; text-align:center; padding-top:50vh; font-size:20px; }
+    /* COPY LINK BUTTON (Backup) */
+    .copy-link-btn {
+        background: #333; color: white; border: none; width: 100%; padding: 10px;
+        font-size: 14px; border-radius: 8px; margin-top: 10px; cursor: pointer;
+    }
+
+    #loading { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; color:white; text-align:center; padding-top:40vh; font-size:18px; }
 
     /* ADS STYLE */
     .ad-box { background:#f4f4f4; padding:2px; margin-top:5px; border:1px dashed #ccc; display:flex; justify-content:center; }
@@ -97,15 +111,17 @@
 <body onclick="playAudio()">
 
     <audio id="bgMusic" loop>
-        <!-- अपनी फाइल का नाम यही रखें -->
         <source src="wishes.mp3" type="audio/mp3">
     </audio>
     <canvas id="bgCanvas"></canvas>
 
-    <!-- LOADING SPINNER -->
-    <div id="loading">♻️ फोटो तैयार हो रही है...<br>कृपया प्रतीक्षा करें...</div>
+    <!-- LOADING SCREEN -->
+    <div id="loading">
+        <div style="font-size:40px;">🔄</div>
+        <br>फोटो तैयार हो रही है...<br>WhatsApp खुल रहा है...
+    </div>
 
-    <!-- ===== CAPTURE AREA (इसका फोटो बनेगा) ===== -->
+    <!-- ===== CAPTURE AREA (फोटो बनेगा) ===== -->
     <div class="capture-area" id="cardToShare">
         <div class="card">
             <div class="top-decor">🕉️ ✨ 🕉️</div>
@@ -119,21 +135,24 @@
 
             <!-- PHOTO -->
             <div class="photo-frame">
-                <!-- CrossOrigin जरूरी है ताकि फोटो का स्क्रीनशॉट बन सके -->
                 <img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/8802/8802672.png" crossorigin="anonymous" alt="Photo">
             </div>
 
-            <!-- AD INSIDE CARD (फोटो में दिखेगा) -->
+            <!-- AD 1 (In Photo) -->
             <div class="ad-box">
                 <script>
                     atOptions = { 'key' : '4acc0331fedb6a2050fa6fc5179175d7', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
                 </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/4acc0331fedb6a2050fa6fc5179175d7/invoke.js"></script>
             </div>
-            <p style="font-size:10px; color:#555; margin-top:5px;">Create yours at: happy-new-year-2026-livid.vercel.app</p>
+
+            <!-- LINK INSIDE IMAGE (ताकि फोटो देखकर भी लोग आ सकें) -->
+            <div class="site-watermark">
+                👉 अपना कार्ड यहाँ बनायें:<br>
+                <span style="color:#FFD700; font-weight:bold;">happy-new-year-2026-livid.vercel.app</span>
+            </div>
         </div>
     </div>
-    <!-- ========================================== -->
 
     <!-- CONTROLS -->
     <div class="controls-area">
@@ -142,9 +161,14 @@
             <input type="file" style="display:none" accept="image/*" onchange="uploadImage(event)">
         </label>
 
-        <!-- MAIN SHARE BUTTON -->
+        <!-- MAIN SHARE -->
         <button class="share-magic-btn" onclick="shareCard()">
-            🚀 WhatsApp पर फोटो भेजें
+            🚀 फोटो और लिंक भेजें
+        </button>
+
+        <!-- BACKUP: COPY LINK -->
+        <button class="copy-link-btn" onclick="copyLink()">
+            📋 सिर्फ लिंक कॉपी करें
         </button>
 
         <!-- AD 2 OUTSIDE -->
@@ -155,7 +179,7 @@
     </div>
 
 <script>
-    /* 1. AUDIO & ANIMATION */
+    /* 1. AUDIO */
     const audio = document.getElementById('bgMusic');
     window.onload = function() { initAnimation(); }
     function playAudio() { if(audio.paused) audio.play(); }
@@ -173,60 +197,56 @@
         }
     }
 
-    /* 3. MAGIC SHARE FUNCTION (Web Share API) */
+    /* 3. MAGIC SHARE (PHOTO + CAPTION LINK) */
     async function shareCard() {
         const loading = document.getElementById('loading');
-        loading.style.display = 'block'; // Show Loading
+        loading.style.display = 'block';
 
         try {
-            // Step 1: Capture the card as an image
+            // Card का फोटो बनाओ
             const canvas = await html2canvas(document.getElementById('cardToShare'), {
-                scale: 2, // High Quality
-                backgroundColor: null,
-                useCORS: true // Important for external images
+                scale: 2, backgroundColor: null, useCORS: true
             });
 
-            // Step 2: Convert canvas to Blob (File)
             canvas.toBlob(async (blob) => {
-                const file = new File([blob], "happy-new-year-2026.png", { type: "image/png" });
+                const file = new File([blob], "HappyNewYear2026.png", { type: "image/png" });
 
-                // Step 3: Check if browser supports direct file sharing
+                // Link जो कैप्शन में जायेगा
+                const shareText = `✨ मेरी फोटो के साथ नए साल की बधाई देखें! 👇\n\n🔗 अपना कार्ड यहाँ बनायें:\n${window.location.href}`;
+
                 if (navigator.share) {
                     try {
                         await navigator.share({
                             files: [file],
-                            title: 'Happy New Year 2026',
-                            text: '✨ मेरी फोटो के साथ नए साल की बधाई देखें! 👇\nअपना कार्ड यहाँ बनायें: ' + window.location.href,
+                            title: 'Happy New Year',
+                            text: shareText // यह लिंक कैप्शन में आएगा
                         });
-                        console.log("Shared successfully");
                     } catch (err) {
-                        console.log("Share failed:", err);
-                        fallbackDownload(canvas); // If share fails, download instead
+                        console.log("Share cancelled");
                     }
                 } else {
-                    // Fallback for Desktop or unsupported browsers
-                    fallbackDownload(canvas);
+                    alert("Sharing not supported on this browser. Downloading image...");
+                    const link = document.createElement('a');
+                    link.download = 'Wishes.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
                 }
                 loading.style.display = 'none';
             }, 'image/png');
 
         } catch (error) {
-            console.error("Error generating image:", error);
-            alert("Sharing failed. Please try downloading manually.");
+            console.error(error);
             loading.style.display = 'none';
         }
     }
 
-    /* Fallback: Download Image if Sharing fails */
-    function fallbackDownload(canvas) {
-        const link = document.createElement('a');
-        link.download = 'Happy-New-Year-2026.png';
-        link.href = canvas.toDataURL();
-        link.click();
-        alert("फोटो डाउनलोड हो गयी है! अब इसे WhatsApp पर भेजें।");
+    /* 4. COPY LINK FUNCTION */
+    function copyLink() {
+        navigator.clipboard.writeText(window.location.href);
+        alert("लिंक कॉपी हो गया! अब WhatsApp पर पेस्ट करें।");
     }
 
-    /* 4. BACKGROUND ANIMATION */
+    /* 5. ANIMATION */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth; canvas.height = window.innerHeight;
