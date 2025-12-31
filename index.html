@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy New Year 2026</title>
-<!-- 1Ò51Ó11Í01Ð61Ó2 1Î81Ñ6 1Ò41Ô51Ï91Ó01Í51Ñ81Ó11Ò2 1Ñ11Ô31Í01Ï91Ô51Ò4 -->
+<!-- à¤¹à¤¿à¤‚à¤¦à¥€ à¤«à¥‹à¤‚à¤Ÿà¥à¤¸ -->
 <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
-<!-- 1Ò41Ô51Î91Ô51Ñ61Ó21Ð81Ò21Ô11Ï9 1Ñ81Ó91Ð81Ó9 1Î91Ó2 1Ò41Ô51Î91Ô51Ñ61Ó11Ñ01Ô51Ï9 -->
+<!-- à¤¸à¥à¤•à¥à¤°à¥€à¤¨à¤¶à¥‰à¤Ÿ à¤²à¥‡à¤¨à¥‡ à¤µà¤¾à¤²à¥€ à¤¸à¥à¤•à¥à¤°à¤¿à¤ªà¥à¤Ÿ -->
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 <style>
@@ -30,30 +30,32 @@
         overflow-x: hidden;
     }
 
-    /* --- CAPTURE AREA (1Ï61Ó11Ò41Î91Ó0 1Ñ11Ô31Ï91Ô3 1Ñ21Ð81Ó91Ï11Ó0) --- */
-    .capture-wrapper {
-        padding: 5px;
+    /* --- CARD DESIGN --- */
+    .card-wrapper {
+        padding: 10px;
         width: 100%;
-        max-width: 420px;
         display: flex;
         justify-content: center;
     }
 
+    /* à¤œà¤¿à¤¸ à¤¹à¤¿à¤¸à¥à¤¸à¥‡ à¤•à¤¾ à¤«à¥‹à¤Ÿà¥‹ à¤²à¥‡à¤¨à¤¾ à¤¹à¥ˆ */
     .card {
         position: relative;
-        width: 100%;
+        width: 95%;
+        max-width: 400px; /* à¤®à¥‹à¤¬à¤¾à¤‡à¤² à¤•à¥‡ à¤²à¤¿à¤ à¤¸à¤¹à¥€ à¤¸à¤¾à¤‡à¤œ */
         background: #fff;
         border: 4px solid var(--gold);
         border-radius: 15px;
         padding: 15px;
         text-align: center;
-        box-shadow: 0 0 40px rgba(139, 0, 0, 0.6);
-        overflow: hidden;
+        box-shadow: 0 0 40px rgba(139, 0, 0, 0.5);
+        z-index: 10;
+        overflow: hidden; /* à¤¤à¤¾à¤•à¤¿ à¤«à¥‹à¤Ÿà¥‹ à¤¬à¤¾à¤¹à¤° à¤¨ à¤¨à¤¿à¤•à¤²à¥‡ */
     }
 
-    /* 1Ð71Ó01Ñ61Ô51Ñ41Ó11Î9 1Ò41Ï61Ó01Ò11Ï9 */
-    .om-decor { font-size: 35px; color: var(--saffron); margin-top: -10px; }
-
+    /* à¤¹à¥‡à¤¡à¤° */
+    .top-decor { font-size: 35px; color: var(--saffron); margin-top: -10px; }
+    
     h1 {
         font-family: 'Rozha One', serif;
         color: var(--maroon);
@@ -63,14 +65,13 @@
     }
 
     .year {
-        font-size: 48px;
+        font-size: 45px;
         background: linear-gradient(to right, #ff512f, #dd2476);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: bold;
     }
 
-    /* 1Ñ21Ð71Ó01Í6 1Ò41Í01Ð61Ó91Ò2 */
     .wishes-text {
         background: var(--cream);
         color: #d84315;
@@ -86,9 +87,9 @@
     /* --- PHOTO FRAME --- */
     .photo-frame {
         width: 100%;
-        height: 320px;
+        height: 300px; 
         background-color: #000;
-        border: 4px double var(--gold);
+        border: 5px double var(--gold);
         border-radius: 10px;
         margin: 10px 0;
         display: flex;
@@ -98,257 +99,245 @@
         position: relative;
     }
 
+    .corner { position: absolute; width: 25px; height: 25px; border: 3px solid var(--saffron); z-index: 5; }
+    .tl { top: 5px; left: 5px; border-right: 0; border-bottom: 0; }
+    .tr { top: 5px; right: 5px; border-left: 0; border-bottom: 0; }
+    .bl { bottom: 5px; left: 5px; border-right: 0; border-top: 0; }
+    .br { bottom: 5px; right: 5px; border-left: 0; border-top: 0; }
+
     #userPhoto {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* 1Ñ11Ô31Ï91Ô3 1Ñ01Ó41Ñ61Ó2 1Ð61Ó11Ï01Ó91Ï11Ó2 */
+        width: 100%; height: 100%;
+        object-fit: contain; 
     }
 
-    /* --- LINK WATERMARK (1Ð41Ó01Î91Ó1 1Ñ11Ô31Ï91Ô3 1Ñ01Ñ6 1Ñ31Ó2 1Ñ81Ó11Í01Î9 1Ð61Ó11Ï01Ó9) --- */
-    .link-watermark {
-        background: #000;
-        color: #fff;
-        font-size: 11px;
-        padding: 6px;
-        border-radius: 20px;
-        margin-top: 5px;
-        display: inline-block;
-        font-family: sans-serif;
-        border: 1px solid var(--gold);
-    }
-
-    /* --- CONTROLS SECTION --- */
+    /* --- ACTION BUTTONS --- */
     .controls {
-        width: 90%;
+        width: 95%;
         max-width: 400px;
-        margin-top: 15px;
         text-align: center;
+        margin-bottom: 20px;
         z-index: 20;
-        padding-bottom: 20px;
     }
 
     .file-btn {
         background: var(--maroon);
         color: white;
-        padding: 10px 25px;
+        padding: 10px 20px;
         border-radius: 50px;
         cursor: pointer;
         font-size: 14px;
         display: inline-block;
+        margin: 10px 0;
         box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
-    /* MAIN SHARE BUTTON */
-    .whatsapp-share-btn {
-        background: linear-gradient(45deg, #25D366, #128C7E);
+    .download-btn {
+        background: #007bff; /* Blue for download */
         color: white;
+        border: none;
         width: 100%;
-        padding: 15px;
+        padding: 12px;
         font-size: 18px;
         font-weight: bold;
-        border: none;
-        border-radius: 10px;
-        margin-top: 15px;
+        border-radius: 8px;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        animation: pulse 2s infinite;
+        margin-bottom: 10px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     }
 
-    /* LOADING OVERLAY */
-    #loading {
-        display: none;
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.85);
-        z-index: 9999;
+    .share-link-btn {
+        background: #25D366; /* WhatsApp Green */
         color: white;
-        text-align: center;
-        padding-top: 45vh;
-        font-size: 18px;
+        border: none;
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     }
 
-    /* ADS */
-    .ad-box {
-        margin-top: 5px;
+    /* --- ADS --- */
+    .ad-wrapper {
+        margin-top: 8px;
         padding: 2px;
         background: #f4f4f4;
         border: 1px dashed #ccc;
+        border-radius: 5px;
         display: flex;
         justify-content: center;
+        align-items: center;
+        overflow: hidden;
     }
 
-    /* ANIMATION CANVAS */
-    #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+    /* --- CANVAS --- */
+    #bgCanvas {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 1; pointer-events: none;
+    }
 
 </style>
 </head>
-<body onclick="playAudio()">
+<body onclick="enableAudio()">
 
-    <!-- AUDIO -->
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop autoplay>
         <source src="wishes.mp3" type="audio/mp3">
     </audio>
+
     <canvas id="bgCanvas"></canvas>
 
-    <!-- LOADING SCREEN -->
-    <div id="loading">
-        <div style="font-size:40px;">”9ã4</div>
-        <br>1Ñ11Ô31Ï91Ô3 1Î81Ñ6 1Ñ81Ó11Í01Î9 1Ð41Ô01Ñ51Ó01Ñ6 1Ò51Ô3 1Ñ61Ò51Ó0 1Ò51Ô0...<br>1Î91Ó51Ñ01Ñ51Ó0 1Ñ01Ô51Ñ61Ð41Ó21Î91Ô51Ò31Ó0 1Î91Ñ61Ó91Í0...
-    </div>
-
-    <!-- ===== CARD AREA (1Ñ51Ò5 1Ñ11Ô31Ï91Ô3 1Ñ21Ð81Ó91Ï11Ó0) ===== -->
-    <div class="capture-wrapper" id="cardToShare">
+    <!-- WRAPPER: à¤¹à¤® à¤¸à¤¿à¤°à¥à¤« à¤‡à¤¸ à¤¹à¤¿à¤¸à¥à¤¸à¥‡ à¤•à¤¾ à¤«à¥‹à¤Ÿà¥‹ à¤²à¥‡à¤‚à¤—à¥‡ -->
+    <div class="card-wrapper" id="captureArea">
         <div class="card">
-            <div class="om-decor">”9ê3„1‚5 7¿8 ”9ê3„1‚5</div>
-            <h1>1Ð81Ò1 1Ò11Ñ61Ô51Ò3 1Î91Ó2 1Ò21Ó31Ñ31Î91Ó01Ñ41Ð81Ó01Î31Í0<br><span class="year">2026</span></h1>
-            
+            <div class="top-decor">ðŸ•‰ï¸ âœ¨ ðŸ•‰ï¸</div>
+            <h1>à¤¨à¤µ à¤µà¤°à¥à¤· à¤•à¥€ à¤¶à¥à¤­à¤•à¤¾à¤®à¤¨à¤¾à¤à¤‚<br><span class="year">2026</span></h1>
+
             <div class="wishes-text">
-                "1Í41Ñ01Î91Ô3 1Î81Ñ6 1Í41Ñ01Î91Ó9 1Ñ01Ó41Ñ61Ó9 1Ñ01Ñ61Ó11Ò11Ó01Ñ6 1Î91Ô3<br>
-                1Ð81Î3 1Ò41Ó01Ñ8 1Î91Ó2 1Ò51Ó01Ñ61Ô51Ð61Ó11Î9 1Ò21Ó31Ñ31Î91Ó01Ñ41Ð81Ó01Î31Í01Ö8"<br>
-                •0†5 1Ï61Ñ5 1Ò21Ô51Ñ61Ó2 1Ñ61Ó01Ñ4 •0†5
+                "à¤†à¤ªà¤•à¥‹ à¤”à¤° à¤†à¤ªà¤•à¥‡ à¤ªà¥‚à¤°à¥‡ à¤ªà¤°à¤¿à¤µà¤¾à¤° à¤•à¥‹<br>
+                à¤¨à¤ à¤¸à¤¾à¤² à¤•à¥€ à¤¹à¤¾à¤°à¥à¤¦à¤¿à¤• à¤¶à¥à¤­à¤•à¤¾à¤®à¤¨à¤¾à¤à¤‚à¥¤"<br>
+                ðŸ™ à¤œà¤¯ à¤¶à¥à¤°à¥€ à¤°à¤¾à¤® ðŸ™
             </div>
 
-            <!-- PHOTO -->
+            <!-- PHOTO SECTION -->
             <div class="photo-frame">
-                <!-- CrossOrigin Image is CRITICAL for screenshots -->
-                <img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/8802/8802672.png" crossorigin="anonymous" alt="Card">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <!-- Default Image -->
+                <img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/8802/8802672.png" alt="Happy New Year" crossorigin="anonymous">
             </div>
 
-            <!-- AD 1 (Card 1Î91Ó9 1Í31Í01Ð61Ñ6 - 1Ñ11Ô31Ï91Ô3 1Ñ41Ó91Í0 1Í41Î31Ï11Ó0) -->
-            <div class="ad-box">
-                <script>
-                    atOptions = { 'key' : '4acc0331fedb6a2050fa6fc5179175d7', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+            <!-- AD 1 inside Card (Will be in photo) -->
+            <div class="ad-wrapper">
+                 <script>
+                    atOptions = {
+                        'key' : '4acc0331fedb6a2050fa6fc5179175d7',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
                 </script>
                 <script type="text/javascript" src="https://www.highperformanceformat.com/4acc0331fedb6a2050fa6fc5179175d7/invoke.js"></script>
             </div>
-
-            <!-- VISIBLE LINK (Watermark) -->
-            <div class="link-watermark">
-                1Î91Ó01Ñ61Ô51Ð1 1Ñ21Ð81Ó01Ñ51Ó91Í0: 
-                <span style="color:#FFD700; font-weight:bold;">happy-new-year-2026-livid.vercel.app</span>
-            </div>
+            
+            <p style="font-size:10px; color:#666; margin-top:5px;">Create your own at: GitHub/HappyNewYear</p>
         </div>
     </div>
-    <!-- ===================================== -->
 
-    <!-- CONTROLS -->
+    <!-- CONTROLS (à¤¯à¥‡ à¤«à¥‹à¤Ÿà¥‹ à¤®à¥‡à¤‚ à¤¨à¤¹à¥€à¤‚ à¤†à¤à¤‚à¤—à¥‡) -->
     <div class="controls">
         <label class="file-btn">
-            ”9â2 1Ñ11Ô31Ï91Ô3 1Ñ21Ð61Ñ81Ó91Í0
+            ðŸ“· 1. à¤…à¤ªà¤¨à¥€ à¤«à¥‹à¤Ÿà¥‹ à¤šà¥à¤¨à¥‡à¤‚
             <input type="file" style="display:none" accept="image/*" onchange="uploadImage(event)">
         </label>
 
-        <!-- SHARE BUTTON -->
-        <button class="whatsapp-share-btn" onclick="shareCard()">
-            •0‹4 WhatsApp 1Ñ01Ñ6 1Ñ31Ó91Ï61Ó91Í0 (Link + Photo)
+        <!-- DOWNLOAD BUTTON -->
+        <button class="download-btn" onclick="downloadCard()">
+            ðŸ“¥ 2. à¤•à¤¾à¤°à¥à¤¡ à¤¡à¤¾à¤‰à¤¨à¤²à¥‹à¤¡ à¤•à¤°à¥‡à¤‚ (Photo)
         </button>
 
-        <!-- AD 2 (Card 1Î91Ó9 1Ñ21Ó01Ò51Ñ6) -->
-        <div class="ad-box" style="margin-top:15px;">
+        <p style="font-size:12px; color:white; text-shadow:1px 1px 2px black;">
+            *à¤¡à¤¾à¤‰à¤¨à¤²à¥‹à¤¡ à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤¬à¤¾à¤¦, à¤«à¥‹à¤Ÿà¥‹ WhatsApp à¤ªà¤° à¤­à¥‡à¤œà¥‡à¤‚à¥¤
+        </p>
+
+        <!-- SHARE LINK BUTTON -->
+        <button class="share-link-btn" onclick="shareLink()">
+            ðŸ”— 3. à¤¸à¤¿à¤°à¥à¤« à¤²à¤¿à¤‚à¤• à¤­à¥‡à¤œà¥‡à¤‚
+        </button>
+
+        <!-- AD 2 Outside -->
+        <div class="ad-wrapper" style="margin-top: 10px;">
             <script async="async" data-cfasync="false" src="https://pl28208324.effectivegatecpm.com/2d3e3e20d096ece9151df243cb876ebf/invoke.js"></script>
             <div id="container-2d3e3e20d096ece9151df243cb876ebf"></div>
         </div>
     </div>
 
 <script>
-    /* 1. AUDIO & ANIMATION */
+    /* 1. AUDIO */
     const audio = document.getElementById('bgMusic');
-    window.onload = function() { initAnimation(); }
-    function playAudio() { if(audio.paused) audio.play(); }
+    window.onload = function() {
+        audio.play().catch(() => console.log("Touch needed"));
+        initAnimation();
+    };
+    function enableAudio() { if (audio.paused) audio.play(); }
 
-    /* 2. PHOTO UPLOAD */
+    /* 2. UPLOAD PHOTO */
     function uploadImage(event) {
         const file = event.target.files[0];
-        if(file){
+        if (file) {
             const reader = new FileReader();
-            reader.onload = function(e){
+            reader.onload = function(e) {
                 document.getElementById('userPhoto').src = e.target.result;
-                playAudio(); // 1Ñ11Ô31Ï91Ô3 1Ñ21Ð61Ñ81Ð41Ó9 1Ò51Ó2 1Ï11Ó01Ð81Ó0 1Ò21Ó31Ñ61Ó4
+                enableAudio();
             }
             reader.readAsDataURL(file);
         }
     }
 
-    /* 3. MAGIC SHARE FUNCTION (PHOTO + LINK TEXT) */
-    async function shareCard() {
-        const loading = document.getElementById('loading');
-        loading.style.display = 'block'; // 1Ñ81Ô31Ð11Ó11Í01Ï1 1Ð61Ó11Ï01Ó01Î7
-
-        try {
-            // Step 1: 1Î91Ó01Ñ61Ô51Ð1 1Î91Ó0 1Ñ11Ô31Ï91Ô3 1Ñ21Ð81Ó01Î7
-            const canvas = await html2canvas(document.getElementById('cardToShare'), {
-                scale: 2, // 1Í31Ï41Ô51Ï51Ó2 1Î91Ô51Ò11Ó01Ñ81Ó11Ï91Ó2
-                backgroundColor: null,
-                useCORS: true // 1Ï61Ñ61Ó31Ñ61Ó2 1Ò51Ô0
-            });
-
-            // Step 2: 1Ñ11Ô31Ï91Ô3 1Î91Ô3 1Ñ11Ó01Í51Ñ8 1Ñ41Ó91Í0 1Ñ21Ð61Ñ81Ô3
-            canvas.toBlob(async (blob) => {
-                const file = new File([blob], "NewYear2026.png", { type: "image/png" });
-
-                // Step 3: 1Ñ81Ó11Í01Î9 1Ð41Ô01Ñ51Ó01Ñ6 1Î91Ñ61Ô3
-                // Vercel 1Î91Ó0 1Ñ81Ó11Í01Î9 1Ñ51Ò51Ó01Ì9 1Î51Ï91Ô31Ñ41Ô01Ï91Ó11Î9 1Í4 1Ï61Ó01Ñ51Ó91Ï11Ó0
-                const myLink = "https://happy-new-year-2026-livid.vercel.app"; 
-                
-                const shareText = `7¿8 1Ñ41Ó91Ñ61Ó2 1Ñ11Ô31Ï91Ô3 1Î91Ó9 1Ò41Ó01Ð5 1Ð81Î3 1Ò41Ó01Ñ8 1Î91Ó2 1Ñ21Ð71Ó01Í6 1Ð61Ó91Ï01Ó91Í0! ”9Ð5\n\n”9å3 1Í31Ñ01Ð81Ó0 1Î91Ó01Ñ61Ô51Ð1 1Ñ51Ò51Ó01Ì9 1Ñ21Ð81Ó01Ñ51Ó91Í0:\n${myLink}`;
-
-                // Step 4: 1Ò21Ó91Ñ51Ñ6 1Î91Ñ61Ô3 (Navigator Share API)
-                if (navigator.share) {
-                    try {
-                        await navigator.share({
-                            files: [file], // 1Ñ11Ô31Ï91Ô3
-                            title: 'Happy New Year',
-                            text: shareText // 1Ñ51Ò5 1Ñ81Ó11Í01Î9 1Î91Ô01Ñ01Ô51Ò21Ð8 1Ñ41Ó91Í0 1Í41Î31Ï11Ó0
-                        });
-                        console.log("Shared successfully");
-                    } catch (err) {
-                        console.log("User cancelled share");
-                    }
-                } else {
-                    // 1Í31Ï11Ñ6 1Ñ21Ô51Ñ61Ó01Í71Õ91Ñ6 1Ò41Ñ01Ô31Ñ61Ô51Ï9 1Ð8 1Î91Ñ61Ó9 (1Ï61Ô01Ò41Ó9 1Ñ81Ô01Ñ01Ï91Ô11Ñ0 1Ñ01Ñ6)
-                    alert("Sharing not supported. Downloading image...");
-                    const link = document.createElement('a');
-                    link.download = 'NewYearCard.png';
-                    link.href = canvas.toDataURL();
-                    link.click();
-                    // 1Ñ81Ó11Í01Î9 1Î91Ô11Ñ01Ó2 1Î91Ñ61Ð81Ó9 1Î91Ó9 1Ñ81Ó11Î3 1Ñ01Ô51Ñ61Ô11Ñ41Ô51Ñ01Ô51Ï9
-                    prompt("1Î91Ó51Ñ01Ñ51Ó0 1Í51Ò4 1Ñ81Ó11Í01Î9 1Î91Ô3 1Î91Ô11Ñ01Ó2 1Î91Ñ61Î91Ó9 1Ñ31Ó91Ï61Ó91Í0:", myLink);
-                }
-                loading.style.display = 'none'; // 1Ñ81Ô31Ð11Ó11Í01Ï1 1Ò51Ï91Ó01Î7
-            }, 'image/png');
-
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Error generating card.");
-            loading.style.display = 'none';
-        }
+    /* 3. DOWNLOAD CARD AS IMAGE (MAGIC PART) */
+    function downloadCard() {
+        // Select the card area
+        const cardElement = document.getElementById('captureArea');
+        
+        // Convert to Image
+        html2canvas(cardElement, {
+            scale: 2, // Better quality
+            backgroundColor: null,
+            useCORS: true
+        }).then(canvas => {
+            // Create download link
+            const link = document.createElement('a');
+            link.download = 'Happy-New-Year-2026.jpg';
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            link.click();
+        });
     }
 
-    /* 4. FLOWER ANIMATION */
+    /* 4. SHARE LINK ONLY */
+    function shareLink() {
+        const text = "âœ¨ *Happy New Year 2026* âœ¨\n\nà¤¨à¤ à¤¸à¤¾à¤² à¤•à¥€ à¤¬à¤§à¤¾à¤ˆ à¤¯à¤¹à¤¾à¤ à¤¦à¥‡à¤–à¥‡à¤‚ à¤”à¤° à¤…à¤ªà¤¨à¤¾ à¤•à¤¾à¤°à¥à¤¡ à¤¬à¤¨à¤¾à¤¯à¥‡à¤‚:\n" + window.location.href;
+        window.open("https://wa.me/?text=" + encodeURIComponent(text), "_blank");
+    }
+
+    /* 5. ANIMATION */
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     let particles = [];
-    const colors = ['#FF9933', '#FFD700', '#fff'];
-    
-    function initAnimation(){
-        for(let i=0; i<50; i++) particles.push({
-            x: Math.random()*canvas.width, y: Math.random()*-canvas.height,
-            size: Math.random()*5+3, speed: Math.random()*2+1,
-            color: colors[Math.floor(Math.random()*colors.length)]
-        });
+    const colors = ['#FF9933', '#FFD700', '#FF4500', '#FFFFFF'];
+
+    class Flower {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * -canvas.height;
+            this.size = Math.random() * 6 + 4;
+            this.speed = Math.random() * 2 + 1;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+        update() {
+            this.y += this.speed;
+            if (this.y > canvas.height) this.y = -10;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.fillStyle = this.color;
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+    function initAnimation() {
+        for(let i=0; i<60; i++) particles.push(new Flower());
         animate();
     }
-    function animate(){
+    function animate() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        particles.forEach(p=>{
-            ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
-            p.y+=p.speed; if(p.y>canvas.height) p.y=-10;
-        });
+        particles.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(animate);
     }
 </script>
